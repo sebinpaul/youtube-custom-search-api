@@ -1,7 +1,7 @@
 package com.youtube.customsearchapi.controllers;
 
 import com.youtube.customsearchapi.misc.ResponseObj;
-import com.youtube.customsearchapi.model.YoutubeDataDTO;
+import com.youtube.customsearchapi.dto.YoutubeSearchResultDto;
 import com.youtube.customsearchapi.service.YoutubeSearchApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public class YoutubeSearchController {
 
     @GetMapping("search")
     public ResponseObj getVideoData(@RequestParam("query") String query){
-        YoutubeDataDTO youtubeDataDTO = youtubeSearchApiService.getVideoData(query);
-        return new ResponseObj(true, youtubeDataDTO);
+        YoutubeSearchResultDto youtubeSearchResultDTO = youtubeSearchApiService.getSearchResult(query);
+        return new ResponseObj(true, youtubeSearchResultDTO);
     }
 }
