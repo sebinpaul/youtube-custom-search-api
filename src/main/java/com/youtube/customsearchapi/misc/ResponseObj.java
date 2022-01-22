@@ -8,12 +8,11 @@ public class ResponseObj {
 
     private boolean result;
 
-    @Autowired
-    private YoutubeSearchResultDto youtubeSearchResultDTO;
+    private Object object;
 
-    public ResponseObj(boolean result, YoutubeSearchResultDto youtubeSearchResultDTO) {
+    public ResponseObj(boolean result, Object object) {
         this.result = result;
-        this.youtubeSearchResultDTO = youtubeSearchResultDTO;
+        this.object = object;
     }
 
     public boolean getResult() {
@@ -25,19 +24,19 @@ public class ResponseObj {
     }
 
     @JsonProperty("data")
-    public YoutubeSearchResultDto getYoutubeDataDTO() {
-        return youtubeSearchResultDTO;
+    public Object getYoutubeDataDTO() {
+        return object;
     }
 
-    public void setYoutubeDataDTO(YoutubeSearchResultDto youtubeSearchResultDTO) {
-        this.youtubeSearchResultDTO = youtubeSearchResultDTO;
+    public void setYoutubeDataDTO(Object object) {
+        this.object = object;
     }
 
     @Override
     public String toString() {
         return "ResponseObj{" +
                 "result='" + result + '\'' +
-                ", youtubeSearchResultDTO=" + youtubeSearchResultDTO +
+                ", youtubeSearchResultDTO=" + object +
                 '}';
     }
 }
