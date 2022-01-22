@@ -1,8 +1,8 @@
 package com.youtube.customsearchapi.service;
 
-import com.youtube.customsearchapi.model.YoutubeDataDTO;
+import com.youtube.customsearchapi.dto.YoutubeSearchResultDto;
 
 public interface YoutubeSearchApiService {
 
-    YoutubeDataDTO getVideoData(String query);
+    YoutubeSearchResultDto getSearchResult(String query);
 }
