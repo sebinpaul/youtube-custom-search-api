@@ -30,7 +30,7 @@ public class YoutubeSearchClient {
         String query = BASE_URL + "?key=" + API_KEY + "&&q=cricket" + "&&maxResults=25&&part=snippet&&publishedAfter=2019-09-16T14:30:06Z";
         YoutubeSearchResultDto youtubeSearchResultDTO = restTemplate.getForObject(query, YoutubeSearchResultDto.class);
         if (youtubeSearchResultDTO != null) {
-            List<Items> metaDataList = youtubeSearchResultDTO.getYoutubeVideoMetaData();
+            List<Items> metaDataList = youtubeSearchResultDTO.getItems();
             List<YoutubeVideoMetaData> youtubeVideoMetaDataList = new ArrayList<>();
             for (Items items : metaDataList) {
                 VideoSnippet videoSnippet = items.getSnippet();

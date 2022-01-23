@@ -27,12 +27,12 @@ public class YoutubeSearchResultDto {
         this.nextPageToken = nextPageToken;
     }
 
-    public List<Items> getYoutubeVideoMetaData() {
+    public List<Items> getItems() {
         return items;
     }
 
-    public void setYoutubeVideoMetaData(List<Items> youtubeVideoMetaData) {
-        this.items = youtubeVideoMetaData;
+    public void setItems(List<Items> items) {
+        this.items = items;
     }
 
     @Override
