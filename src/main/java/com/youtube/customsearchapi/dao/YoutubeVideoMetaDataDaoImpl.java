@@ -4,12 +4,14 @@ import com.youtube.customsearchapi.model.YoutubeVideoMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -32,6 +34,7 @@ public class YoutubeVideoMetaDataDaoImpl implements YoutubeVideoMetaDataDao {
         Query query = new Query();
         query.addCriteria(Criteria.where("title").regex(searchQuery, "i"));
         query.addCriteria(Criteria.where("description").regex(searchQuery, "i"));
+        query.with(Sort.by(Sort.Direction.DESC, "publishTime"));
         return mongoTemplate.find(query, YoutubeVideoMetaData.class);
     }
 }
