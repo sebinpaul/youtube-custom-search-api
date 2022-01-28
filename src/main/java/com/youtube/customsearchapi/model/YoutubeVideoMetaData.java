@@ -1,19 +1,19 @@
 package com.youtube.customsearchapi.model;
 
-import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
-import java.util.Date;
 
 @Document
 public class YoutubeVideoMetaData {
-    String title;
-    String description;
-    Instant publishTime;
-    Thumbnail thumbnail;
+    private String videoId;
+    private String title;
+    private String description;
+    private Instant publishTime;
+    private Thumbnail thumbnail;
 
-    public YoutubeVideoMetaData(String title, String description, Instant publishTime, Thumbnail thumbnail) {
+    public YoutubeVideoMetaData(String videoId, String title, String description, Instant publishTime, Thumbnail thumbnail) {
+        this.videoId = videoId;
         this.title = title;
         this.description = description;
         this.publishTime = publishTime;
@@ -50,6 +50,14 @@ public class YoutubeVideoMetaData {
 
     public void setThumbnail(Thumbnail thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
     }
 
     @Override

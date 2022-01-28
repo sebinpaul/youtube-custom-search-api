@@ -9,9 +9,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -26,7 +24,7 @@ public class YoutubeVideoMetaDataDaoImpl implements YoutubeVideoMetaDataDao {
     @Override
     public void saveYoutubeVideoMetaData(List<YoutubeVideoMetaData> youtubeVideoMetaData) {
         List<YoutubeVideoMetaData> response = (List<YoutubeVideoMetaData>) mongoTemplate.insertAll(youtubeVideoMetaData);
-        LOGGER.info("Successfully saved new Youtube videos metadata - {} ", response);
+        LOGGER.info("Successfully saved {} new Youtube videos metadata - {} ", response.size(), response);
     }
 
     @Override

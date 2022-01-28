@@ -7,12 +7,16 @@ import java.time.temporal.ChronoUnit;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Items implements Comparable<Items> {
 
+    private VideoId id;
+
     private VideoSnippet snippet;
 
-    public Items() {}
+    public Items() {
+    }
 
-    public Items(VideoSnippet youtubeVideoSnippet) {
-        this.snippet = youtubeVideoSnippet;
+    public Items(VideoId id, VideoSnippet snippet) {
+        this.id = id;
+        this.snippet = snippet;
     }
 
     public VideoSnippet getSnippet() {
@@ -21,6 +25,14 @@ public class Items implements Comparable<Items> {
 
     public void setSnippet(VideoSnippet snippet) {
         this.snippet = snippet;
+    }
+
+    public VideoId getId() {
+        return id;
+    }
+
+    public void setId(VideoId id) {
+        this.id = id;
     }
 
     @Override
@@ -32,9 +44,9 @@ public class Items implements Comparable<Items> {
 
     @Override
     public int compareTo(Items items) {
-       if(items.getSnippet().getPublishTime().truncatedTo(ChronoUnit.DAYS).isAfter(snippet.getPublishTime().truncatedTo(ChronoUnit.DAYS))){
+        if (items.getSnippet().getPublishTime().truncatedTo(ChronoUnit.DAYS).isAfter(snippet.getPublishTime().truncatedTo(ChronoUnit.DAYS))) {
             return -1;
         }
-       return 1;
+        return 1;
     }
 }
