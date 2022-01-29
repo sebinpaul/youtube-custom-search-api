@@ -27,7 +27,6 @@
 - Also try and use meaningful variable/function names, and maintain indentation and code style.
 - Submission should have a `README` file containing instructions to run the server and test the API.
 - Preferred language & Framework
-- Send your submission (Git repository) link at chitra@fampay.in
 
 # Reference:
 
