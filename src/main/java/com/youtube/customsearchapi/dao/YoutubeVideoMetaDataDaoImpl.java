@@ -28,11 +28,21 @@ public class YoutubeVideoMetaDataDaoImpl implements YoutubeVideoMetaDataDao {
     }
 
     @Override
-    public List<YoutubeVideoMetaData> getYoutubeVideoMetaData(String searchQuery) {
+    public List<YoutubeVideoMetaData> getYoutubeVideoMetaData(String searchQuery, long limit, long page) {
         Query query = new Query();
         query.addCriteria(Criteria.where("title").regex(searchQuery, "i"));
         query.addCriteria(Criteria.where("description").regex(searchQuery, "i"));
         query.with(Sort.by(Sort.Direction.DESC, "publishTime"));
+        query.skip((page - 1) * limit);
+        query.limit(Math.toIntExact(limit));
         return mongoTemplate.find(query, YoutubeVideoMetaData.class);
+    }
+
+    @Override
+    public long getYoutubeVideoMetaDataCount(String searchQuery) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("title").regex(searchQuery, "i"));
+        query.addCriteria(Criteria.where("description").regex(searchQuery, "i"));
+        return mongoTemplate.count(query, YoutubeVideoMetaData.class);
     }
 }

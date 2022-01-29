@@ -8,5 +8,7 @@ public interface YoutubeVideoMetaDataDao{
 
     void saveYoutubeVideoMetaData(List<YoutubeVideoMetaData> youtubeVideoMetaDataList);
 
-    List<YoutubeVideoMetaData> getYoutubeVideoMetaData(String query);
+    List<YoutubeVideoMetaData> getYoutubeVideoMetaData(String query, long limit, long page);
+
+    long getYoutubeVideoMetaDataCount(String searchQuery);
 }
